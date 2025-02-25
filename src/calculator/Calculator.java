@@ -16,13 +16,12 @@ public class Calculator<T extends Number> {
     }
 
     public Number calculate() {
-        boolean isInteger = (x instanceof Integer && y instanceof Integer);
         double doubleX = x.doubleValue();
         double doubleY = y.doubleValue();
 
         double result = switch (operator) {
             case PLUS -> doubleX + doubleY;
-            case Minus -> doubleX - doubleY;
+            case MINUS -> doubleX - doubleY;
             case MULTIPLE -> doubleX * doubleY;
             case DIVIDE -> {
                 if (doubleY == 0) {
@@ -38,13 +37,8 @@ public class Calculator<T extends Number> {
             }
         };
 
-        if (isInteger) {
-            resultList.add((int) result);
-            return (int) result;
-        } else {
-            resultList.add(result);
-            return result;
-        }
+        resultList.add(result);
+        return result;
     }
 
     public List<Number> getResultList() {
