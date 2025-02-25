@@ -10,12 +10,12 @@ public class Calculator<T extends Number> {
     private T x;
     private T y;
     private Operator operator;
-    private List<Number> resultList = new ArrayList<>();
+    private List<T> resultList = new ArrayList<>();
 
     public Calculator() {
     }
 
-    public Number calculate() {
+    public T calculate() {
         double doubleX = x.doubleValue();
         double doubleY = y.doubleValue();
 
@@ -37,16 +37,21 @@ public class Calculator<T extends Number> {
             }
         };
 
-        resultList.add(result);
-        return result;
+        T genericResult = (T) Double.valueOf(result);
+        resultList.add(genericResult);
+        return genericResult;
     }
 
-    public List<Number> getResultList() {
+    public List<T> getResultList() {
         return resultList;
     }
 
-    public void setResultList(List<Number> resultList) {
+    public void setResultList(List<T> resultList) {
         this.resultList = resultList;
+    }
+
+    public void removeResultList(int index) {
+        this.resultList.remove(index);
     }
 
     public void setValue(T x, T y, Operator operator) {

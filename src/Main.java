@@ -15,13 +15,13 @@ public class Main {
         do {
             System.out.print("첫 번째 정수또는 실수 값을 입력해 주세요 : ");
             String x = scanner.next();
-            if (x.equals(EXIT)) {
+            if (EXIT.equals(x)) {
                 System.out.println("계산기를 종료합니다.");
                 break;
             }
             System.out.print("두 번째 정수또는 실수 값을 입력해 주세요 : ");
             String y = scanner.next();
-            if (y.equals(EXIT)) {
+            if (EXIT.equals(y)) {
                 System.out.println("계산기를 종료합니다.");
                 break;
             }
@@ -29,7 +29,7 @@ public class Main {
             System.out.print("연산자를 입력해 주세요 : ");
             String operator = scanner.next();
 
-            if (operator.equals(EXIT)) {
+            if (EXIT.equals(operator)) {
                 System.out.println("계산기를 종료합니다.");
                 break;
             }
