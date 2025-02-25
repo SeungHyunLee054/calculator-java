@@ -51,6 +51,7 @@ public class Main {
                 System.out.println("result = " + result);
             } catch (Exception e) {
                 System.out.println("0으로 나눌 수 없습니다.");
+                continue;
             }
 
             System.out.println("가장 큰 값 : " + calculator.getResultList().stream()
