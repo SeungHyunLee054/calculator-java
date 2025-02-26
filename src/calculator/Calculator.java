@@ -64,8 +64,8 @@ public class Calculator<T extends Number> {
         this.resultList = resultList;
     }
 
-    public void removeResultList(int index) {
-        this.resultList.remove(index);
+    public T removeFirstElement() {
+        return this.resultList.remove(0);
     }
 
     public void setValue(T x, T y, Operator operator) {
