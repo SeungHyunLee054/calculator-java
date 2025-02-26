@@ -14,7 +14,7 @@ public class Main {
             InputOutputValue value;
             try {
                 value = ioVal.scanVariable();
-                if (value.isFlag()) {
+                if (value.isExitFlag()) {
                     break;
                 }
             } catch (NumberFormatException e) {
@@ -24,7 +24,7 @@ public class Main {
 
             // 연산자 값을 scan
             InputOutputValue operator = ioVal.scanOperator();
-            if (operator.isFlag()) {
+            if (operator.isExitFlag()) {
                 break;
             }
 

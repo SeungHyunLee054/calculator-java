@@ -8,20 +8,20 @@ public class InputOutputValue {
     private String x;
     private String y;
     private String operator;
-    private boolean flag;
+    private boolean exitFlag;
 
     public InputOutputValue() {
     }
 
-    public InputOutputValue(String x, String y, boolean flag) {
+    public InputOutputValue(String x, String y, boolean exitFlag) {
         this.x = x;
         this.y = y;
-        this.flag = flag;
+        this.exitFlag = exitFlag;
     }
 
-    public InputOutputValue(String operator, boolean flag) {
+    public InputOutputValue(String operator, boolean exitFlag) {
         this.operator = operator;
-        this.flag = flag;
+        this.exitFlag = exitFlag;
     }
 
     public InputOutputValue scanVariable() {
@@ -34,9 +34,7 @@ public class InputOutputValue {
         }
 
         // 숫자가 입력되었는지 확인
-        if (!x.chars().allMatch(Character::isDigit)) {
-            throw new NumberFormatException("숫자를 입력해 주세요.");
-        }
+        validateNumber(x);
 
         System.out.print("두 번째 정수 또는 실수 값을 입력해 주세요 : ");
         y = scanner.next();
@@ -47,9 +45,7 @@ public class InputOutputValue {
         }
 
         // 숫자가 입력되었는지 확인
-        if (!y.chars().allMatch(Character::isDigit)) {
-            throw new NumberFormatException("숫자를 입력해 주세요.");
-        }
+        validateNumber(y);
 
         return new InputOutputValue(x, y, false);
     }
@@ -70,15 +66,6 @@ public class InputOutputValue {
         scanner.close();
     }
 
-    private boolean isExit(String str) {
-        if (EXIT.equals(str)) {
-            System.out.println("계산기를 종료합니다.");
-            return true;
-        }
-
-        return false;
-    }
-
     public String getX() {
         return x;
     }
@@ -91,7 +78,23 @@ public class InputOutputValue {
         return operator;
     }
 
-    public boolean isFlag() {
-        return flag;
+    public boolean isExitFlag() {
+        return exitFlag;
     }
+
+    private void validateNumber(String str) {
+        if (!str.chars().allMatch(Character::isDigit)) {
+            throw new NumberFormatException("숫자를 입력해 주세요.");
+        }
+    }
+
+    private boolean isExit(String str) {
+        if (EXIT.equals(str)) {
+            System.out.println("계산기를 종료합니다.");
+            return true;
+        }
+
+        return false;
+    }
+
 }
