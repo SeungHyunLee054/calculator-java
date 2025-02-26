@@ -1,7 +1,8 @@
 package type;
 
 public enum Operator {
-    PLUS("+"), MINUS("-"), MULTIPLE("*"), DIVIDE("/"), MOD("%");
+    PLUS("+"), MINUS("-"), MULTIPLE("*"), DIVIDE("/"), MOD("%"),
+    EXPONENT("^"), LOG("log");
 
     private final String mathSymbol;
 
@@ -20,6 +21,6 @@ public enum Operator {
             }
         }
 
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("연산자를 잘못 입력하였습니다.");
     }
 }

@@ -1,64 +1,56 @@
 import calculator.Calculator;
+import io.InputOutputValue;
 import parsing.Parsing;
 import type.Operator;
 
-import java.util.Comparator;
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        final String EXIT = "exit";
-        Scanner scanner = new Scanner(System.in);
         Calculator<Number> calculator = new Calculator<>();
+        InputOutputValue ioVal = new InputOutputValue();
         System.out.println("exit 입력 시 종료");
 
         do {
-            System.out.print("첫 번째 정수또는 실수 값을 입력해 주세요 : ");
-            String x = scanner.next();
-            if (EXIT.equals(x)) {
-                System.out.println("계산기를 종료합니다.");
-                break;
-            }
-            System.out.print("두 번째 정수또는 실수 값을 입력해 주세요 : ");
-            String y = scanner.next();
-            if (EXIT.equals(y)) {
-                System.out.println("계산기를 종료합니다.");
+            // 정수 또는 실수 값을 scan
+            InputOutputValue value = ioVal.scanVariable();
+            if (value.isFlag()) {
                 break;
             }
 
-            System.out.print("연산자를 입력해 주세요 : ");
-            String operator = scanner.next();
-
-            if (EXIT.equals(operator)) {
-                System.out.println("계산기를 종료합니다.");
+            // 연산자 값을 scan
+            InputOutputValue operator = ioVal.scanOperator();
+            if (operator.isFlag()) {
                 break;
             }
 
             Operator op;
             try {
-                op = Operator.fromMathSymbol(operator);
-            } catch (Exception e) {
-                System.out.println("연산자를 잘못 입력하였습니다.");
+                op = Operator.fromMathSymbol(operator.getOperator());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
                 continue;
             }
 
             try {
-                Number numX = Parsing.parseNumber(x);
-                Number numY = Parsing.parseNumber(y);
+                Number numX = Parsing.parseNumber(value.getX());
+                Number numY = Parsing.parseNumber(value.getY());
                 calculator.setValue(numX, numY, op);
                 Number result = calculator.calculate();
 
                 System.out.println("result = " + result);
-            } catch (Exception e) {
-                System.out.println("0으로 나눌 수 없습니다.");
+            } catch (ArithmeticException e) {
+                System.out.println(e.getMessage());
                 continue;
             }
 
-            System.out.println("가장 큰 값 : " + calculator.getResultList().stream()
-                    .max(Comparator.comparingDouble(Number::doubleValue))
-                    .orElseGet(() -> Double.NaN));
+            try {
+                Number largestResult = calculator.getLargestResult();
+                System.out.println("largestResult = " + largestResult);
+            } catch (NullPointerException e) {
+                System.out.println(e.getMessage());
+            }
+
         } while (true);
 
-        scanner.close();
+        ioVal.closeScanner();
     }
 }
