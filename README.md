@@ -14,7 +14,7 @@
 ## 기능 Flow
 1. Scanner를 통해 정수 또는 실수 값을 입력 받는다.(숫자를 입력하지 않으면 Exception 발생 -> catch문에서 처리, exit 입력 시 프로그램 종료)
 2. Generic으로 Number class를 extends하여 정수 또는 실수값을 입력하여도 계산이 가능
-3. Scanner를 통해 연산자를 입력받는다(Enum으로 연산자를 관리 옳바르지 않은 연산자를 입력하면 Exception 발생 -> catch문에서 처리, exit 입력 시 프로그램 종료)
+3. Scanner를 통해 연산자를 입력받는다(Enum으로 연산자를 관리, 옳바르지 않은 연산자를 입력하면 Exception 발생 -> catch문에서 처리, exit 입력 시 프로그램 종료)
 4. Calculator class에서 입력받은 숫자와 연산자를 switch문으로 구분하여 계산, 결과값 저장 및 반환(나누기, 나머지의 분모에 0이 들어왔을 때, log 계산에 0이 들어왔을 때 Exception 발생 -> catch문에서 처리)
 
 ## 트러블 슈팅
