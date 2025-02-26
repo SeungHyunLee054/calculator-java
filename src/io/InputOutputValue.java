@@ -41,7 +41,7 @@ public class InputOutputValue {
     }
 
     public InputOutputValue scanOperator() {
-        System.out.print("연산자를 입력해 주세요 : ");
+        System.out.print("연산자를 입력해 주세요(+, -, *, /, %, ^, log) : ");
         operator = scanner.next();
         if (isExit(operator)) {
             return new InputOutputValue(null, true);
