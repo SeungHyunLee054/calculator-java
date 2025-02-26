@@ -11,9 +11,15 @@ public class Main {
 
         do {
             // 정수 또는 실수 값을 scan
-            InputOutputValue value = ioVal.scanVariable();
-            if (value.isFlag()) {
-                break;
+            InputOutputValue value;
+            try {
+                value = ioVal.scanVariable();
+                if (value.isFlag()) {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+                continue;
             }
 
             // 연산자 값을 scan

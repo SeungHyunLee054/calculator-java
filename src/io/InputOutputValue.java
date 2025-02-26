@@ -30,11 +30,17 @@ public class InputOutputValue {
         if (isExit(x)) {
             return new InputOutputValue(null, null, true);
         }
+        if (!x.chars().allMatch(Character::isDigit)) {
+            throw new NumberFormatException("숫자를 입력해 주세요.");
+        }
 
         System.out.print("두 번째 정수 또는 실수 값을 입력해 주세요 : ");
         y = scanner.next();
         if (isExit(y)) {
             return new InputOutputValue(x, null, true);
+        }
+        if (!y.chars().allMatch(Character::isDigit)) {
+            throw new NumberFormatException("숫자를 입력해 주세요.");
         }
 
         return new InputOutputValue(x, y, false);
