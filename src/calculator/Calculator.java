@@ -30,7 +30,7 @@ public class Calculator<T extends Number> {
                 }
                 yield doubleX / doubleY;
             }
-            case MOD -> {
+            case MODULO -> {
                 if (doubleY == 0) {
                     throw new ArithmeticException("분모가 0이 될 수 없습니다.");
                 }

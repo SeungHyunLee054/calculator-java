@@ -1,7 +1,7 @@
 package type;
 
 public enum Operator {
-    PLUS("+"), MINUS("-"), MULTIPLE("*"), DIVIDE("/"), MOD("%"),
+    PLUS("+"), MINUS("-"), MULTIPLE("*"), DIVIDE("/"), MODULO("%"),
     EXPONENT("^"), LOG("log");
 
     private final String mathSymbol;
