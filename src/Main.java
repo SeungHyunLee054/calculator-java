@@ -28,6 +28,7 @@ public class Main {
                 break;
             }
 
+            // 입력받은 연산자가 enum에서 정의한 연산자와 같은지 확인 및 enum class 반환
             Operator op;
             try {
                 op = Operator.fromMathSymbol(operator.getOperator());
@@ -36,6 +37,7 @@ public class Main {
                 continue;
             }
 
+            // 계산 및 결과 값 반환
             try {
                 Number numX = Parsing.parseNumber(value.getX());
                 Number numY = Parsing.parseNumber(value.getY());
@@ -48,6 +50,7 @@ public class Main {
                 continue;
             }
 
+            // 계산된 결과값 중 가장 큰 값 반환
             try {
                 Number largestResult = calculator.getLargestResult();
                 System.out.println("largestResult = " + largestResult);

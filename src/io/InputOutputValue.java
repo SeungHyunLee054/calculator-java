@@ -27,18 +27,26 @@ public class InputOutputValue {
     public InputOutputValue scanVariable() {
         System.out.print("첫 번째 정수 또는 실수 값을 입력해 주세요 : ");
         x = scanner.next();
+
+        // 종료 키워드가 입력되었는지 확인
         if (isExit(x)) {
             return new InputOutputValue(null, null, true);
         }
+
+        // 숫자가 입력되었는지 확인
         if (!x.chars().allMatch(Character::isDigit)) {
             throw new NumberFormatException("숫자를 입력해 주세요.");
         }
 
         System.out.print("두 번째 정수 또는 실수 값을 입력해 주세요 : ");
         y = scanner.next();
+
+        // 종료 키워드가 입력되었는지 확인
         if (isExit(y)) {
             return new InputOutputValue(x, null, true);
         }
+
+        // 숫자가 입력되었는지 확인
         if (!y.chars().allMatch(Character::isDigit)) {
             throw new NumberFormatException("숫자를 입력해 주세요.");
         }
@@ -49,6 +57,8 @@ public class InputOutputValue {
     public InputOutputValue scanOperator() {
         System.out.print("연산자를 입력해 주세요(+, -, *, /, %, ^, log) : ");
         operator = scanner.next();
+
+        // 종료 키워드가 입력되었는지 확인
         if (isExit(operator)) {
             return new InputOutputValue(null, true);
         }
