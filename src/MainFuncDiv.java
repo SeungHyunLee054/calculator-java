@@ -1,11 +1,11 @@
-import calculator.Calculator;
+import calculator.CalculatorFuncDiv;
 import io.InputValue;
 import parsing.Parsing;
-import type.Operator;
+import type.OperatorFuncDiv;
 
-public class Main {
+public class MainFuncDiv {
     public static void main(String[] args) {
-        Calculator<Number> calculator = new Calculator<>();
+        CalculatorFuncDiv<Number> calculator = new CalculatorFuncDiv<>();
         InputValue inputVal = new InputValue();
         System.out.println("exit 입력 시 종료");
 
@@ -29,9 +29,9 @@ public class Main {
             }
 
             // 입력받은 연산자가 enum에서 정의한 연산자와 같은지 확인 및 enum class 반환
-            Operator op;
+            OperatorFuncDiv op;
             try {
-                op = Operator.fromMathSymbol(operator.getOperator());
+                op = OperatorFuncDiv.fromMathSymbol(operator.getOperator());
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 continue;
@@ -63,3 +63,4 @@ public class Main {
         inputVal.closeScanner();
     }
 }
+

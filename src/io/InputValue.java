@@ -2,7 +2,7 @@ package io;
 
 import java.util.Scanner;
 
-public class InputOutputValue {
+public class InputValue {
     private final Scanner scanner = new Scanner(System.in);
     private static final String EXIT = "exit";
     private String x;
@@ -10,27 +10,27 @@ public class InputOutputValue {
     private String operator;
     private boolean exitFlag;
 
-    public InputOutputValue() {
+    public InputValue() {
     }
 
-    public InputOutputValue(String x, String y, boolean exitFlag) {
+    public InputValue(String x, String y, boolean exitFlag) {
         this.x = x;
         this.y = y;
         this.exitFlag = exitFlag;
     }
 
-    public InputOutputValue(String operator, boolean exitFlag) {
+    public InputValue(String operator, boolean exitFlag) {
         this.operator = operator;
         this.exitFlag = exitFlag;
     }
 
-    public InputOutputValue scanVariable() {
+    public InputValue scanVariable() {
         System.out.print("첫 번째 정수 또는 실수 값을 입력해 주세요 : ");
         x = scanner.next();
 
         // 종료 키워드가 입력되었는지 확인
         if (isExit(x)) {
-            return new InputOutputValue(null, null, true);
+            return new InputValue(null, null, true);
         }
 
         // 숫자가 입력되었는지 확인
@@ -41,25 +41,25 @@ public class InputOutputValue {
 
         // 종료 키워드가 입력되었는지 확인
         if (isExit(y)) {
-            return new InputOutputValue(x, null, true);
+            return new InputValue(x, null, true);
         }
 
         // 숫자가 입력되었는지 확인
         validateNumber(y);
 
-        return new InputOutputValue(x, y, false);
+        return new InputValue(x, y, false);
     }
 
-    public InputOutputValue scanOperator() {
+    public InputValue scanOperator() {
         System.out.print("연산자를 입력해 주세요(+, -, *, /, %, ^, log) : ");
         operator = scanner.next();
 
         // 종료 키워드가 입력되었는지 확인
         if (isExit(operator)) {
-            return new InputOutputValue(null, true);
+            return new InputValue(null, true);
         }
 
-        return new InputOutputValue(operator, false);
+        return new InputValue(operator, false);
     }
 
     public void closeScanner() {
