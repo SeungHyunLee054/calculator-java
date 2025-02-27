@@ -4,6 +4,7 @@ import parsing.Parsing;
 import type.Operator;
 
 public class Main {
+    // 기능 분리를 사용하지 않은 실행
     public static void main(String[] args) {
         Calculator<Number> calculator = new Calculator<>();
         InputValue inputVal = new InputValue();

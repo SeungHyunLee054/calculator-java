@@ -4,6 +4,7 @@ import parsing.Parsing;
 import type.OperatorFuncDiv;
 
 public class MainFuncDiv {
+    // 기능 분리를 사용한 실행
     public static void main(String[] args) {
         CalculatorFuncDiv<Number> calculator = new CalculatorFuncDiv<>();
         InputValue inputVal = new InputValue();
