@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class InputValue {
     private final Scanner scanner = new Scanner(System.in);
     private static final String EXIT = "exit";
+    private static final String NUMERIC_REGEX= "[-+]?\\d*\\.?\\d+";
     private String x;
     private String y;
     private String operator;
@@ -83,7 +84,7 @@ public class InputValue {
     }
 
     private void validateNumber(String str) {
-        if (!str.chars().allMatch(Character::isDigit)) {
+        if (!str.matches(NUMERIC_REGEX)) {
             throw new NumberFormatException("숫자를 입력해 주세요.");
         }
     }
