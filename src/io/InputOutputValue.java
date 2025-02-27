@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputOutputValue {
     private final Scanner scanner = new Scanner(System.in);
-    private final String EXIT = "exit";
+    private static final String EXIT = "exit";
     private String x;
     private String y;
     private String operator;
