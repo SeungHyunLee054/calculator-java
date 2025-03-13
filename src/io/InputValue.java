@@ -1,11 +1,12 @@
 package io;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class InputValue {
     private final Scanner scanner = new Scanner(System.in);
     private static final String EXIT = "exit";
-    private static final String NUMERIC_REGEX= "[-+]?\\d*\\.?\\d+";
+    private static final Pattern NUMERIC_REGEX = Pattern.compile("[-+]?\\d*\\.?\\d+");
     private String x;
     private String y;
     private String operator;
@@ -84,7 +85,7 @@ public class InputValue {
     }
 
     private void validateNumber(String str) {
-        if (!str.matches(NUMERIC_REGEX)) {
+        if (!NUMERIC_REGEX.matcher(str).matches()) {
             throw new NumberFormatException("숫자를 입력해 주세요.");
         }
     }
